@@ -16,7 +16,7 @@ const UpdateData = () => {
         setItem(itemExist)
     }, [])
 
-    const handleChange = (e) => {
+    const onChange = (e) => {
         let name = e.target.name
         let value = e.target.value
         setItem({ ...item, [name]: value })
@@ -28,65 +28,29 @@ const UpdateData = () => {
         navigate('/')
     }
     return (
-        <div className='container mx-auto flex justify-center  mb-10'>
-            <div className='w-full md:w-96 border p-4 rounded shadow-md text-gray-800 mx-2 my-2'>
-                <p className='text-center font-bold text-2xl mb-4'>Update Item</p>
-                <form onSubmit={updateItemHandler}>
-                    <div className='flex flex-col'>
-                        <label htmlFor='name' className='text-xs mb-2 font-bold'>Name</label>
-                        <input
-                            id='name'
-                            placeholder='Enter name'
-                            name="name"
-                            className='border rounded p-1 focus:outline-none'
-                            value={item.name}
-                            onChange={(handleChange)} />
-                    </div>
-                    <div className='flex flex-col my-2'>
-                        <label htmlFor='userName' className='text-xs mb-2 font-bold'>Item Name</label>
-                        <input
-                            id='userName'
-                            placeholder='Enter item name'
-                            name='username'
-                            className='border rounded p-1 focus:outline-none'
-                            value={item.username}
-                            onChange={handleChange} />
-                    </div>
-                    <div className='flex flex-col my-2'>
-                        <label htmlFor='email' className='text-xs mb-2 font-bold'>Email</label>
-                        <input
-                            id='email'
-                            placeholder='Enter email'
-                            name='email'
-                            className='border rounded p-1 focus:outline-none'
-                            value={item.email}
-                            onChange={handleChange} />
-                    </div>
-                    <div className='flex flex-col my-2'>
-                        <label htmlFor='phone' className='text-xs mb-2 font-bold'>Phone</label>
-                        <input
-                            id='phone'
-                            placeholder='Enter phone'
-                            name='phone'
-                            className='border rounded p-1 focus:outline-none'
-                            value={item.phone}
-                            onChange={handleChange} />
-                    </div>
-                    <div className='flex flex-col my-2'>
-                        <label htmlFor='website' className='text-xs mb-2 font-bold'>Website</label>
-                        <input
-                            id='website'
-                            placeholder='Enter website name'
-                            name='website'
-                            className='border rounded p-1 focus:outline-none'
-                            value={item.website}
-                            onChange={handleChange} />
-                    </div>
-                    <button type='submit' className='bg-blue-500 rounded-lg w-full text-white p-2 mt-8'>Update Item</button>
-                </form>
-            </div>
-        </div>
-    )
+        <Container>
+          <Form onSubmit={updateItemHandler}>
+            <Form.Group className="mb-3" controlId="formBasicName">
+              <Form.Label>Your Name</Form.Label>
+              <Form.Control type="text" placeholder="Your Name" id="name" name="name" value={item.name} onChange={onChange} />
+            </Form.Group>
+    
+            <Form.Group className="mb-3" controlId="formBasicEmail">
+              <Form.Label>New Email address</Form.Label>
+              <Form.Control type="email" placeholder="Enter email" id="email" name="email" value={item.email} onChange={onChange} />
+            </Form.Group>
+    
+            <Form.Group className="mb-3" controlId="formBasicphone">
+              <Form.Label>New Phone Number</Form.Label>
+              <Form.Control type="text" placeholder="Phone"id="phone" name="phone" value={item.phone} onChange={onChange} />
+            </Form.Group>
+    
+            <Button variant="primary" type="submit">
+              Update Record
+            </Button>
+          </Form>
+        </Container>
+      );
 }
 
 export default UpdateData
